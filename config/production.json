@@ -1,8 +1,0 @@
-{
-  "MONGO_URI": "mongodb+srv://devConnector:devConnectorPass@cluster0.mvepw.mongodb.net/dev-connector?retryWrites=true&w=majority",
-  "JWT_SECRET": "my-ulta-secure-and-ultra-long-secrect",
-  "JWT_EXPIRES_IN": "90d",
-  "JWT_COOKIE_EXPIRES_IN": "90",
-  "GITHUB_CLIENT_ID": "81e62e3f724a9a0680c5",
-  "GITHUB_CLIENT_SECRET": "1617376af9022d7832c01308b5ea038627a7a2df"
-}
