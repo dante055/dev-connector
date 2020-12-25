@@ -42,9 +42,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // @desc Unimplemented route handler
-app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!!`, 404));
-});
+// app.all('*', (req, res, next) => {
+//   next(new AppError(`Can't find ${req.originalUrl} on this server!!`, 404));
+// });
 
 // @desc error handling middleware
 app.use(require('./controllers/errorController'));
