@@ -67,7 +67,11 @@ const ProfileForm = ({
 
   const handleSubmit = e => {
     e.preventDefault();
-    createEditProfile(formData, history, profile ? true : false);
+    createEditProfile(
+      formData,
+      history,
+      profile !== 'NOT_CREATED' ? true : false
+    );
   };
 
   const input = (type, placeholder, name, value, isRequired) => (
@@ -189,7 +193,7 @@ const ProfileForm = ({
         )}
 
         <input type='submit' className='btn btn-primary my-1' />
-        <Link to='dashboard' className='btn btn-light my-1'>
+        <Link to='/dashboard' className='btn btn-light my-1'>
           Go Back
         </Link>
       </form>

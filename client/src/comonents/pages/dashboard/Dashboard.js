@@ -29,7 +29,8 @@ const Dashboard = ({
         <i className='fas fa-user'></i>
         Welcome {user && user.name}
       </p>
-      {profile ? (
+
+      {profile && profile != 'NOT_CREATED' ? (
         <>
           <div className='dash-buttons'>
             <Link to='/dashboard/edit-profile' className='btn'>
@@ -46,9 +47,13 @@ const Dashboard = ({
             </Link>
           </div>
 
-          <Experience experience={profile.experience} />
+          {profile.experience.length ? (
+            <Experience experience={profile.experience} />
+          ) : null}
 
-          <Education education={profile.education} />
+          {profile.education.length ? (
+            <Education education={profile.education} />
+          ) : null}
 
           <div className='my-2'>
             <button onClick={() => deleteAccount()} className='btn btn-danger'>
@@ -60,7 +65,7 @@ const Dashboard = ({
       ) : (
         <>
           <p>You have not yet setup a profile, please add some info!</p>
-          <Link to='/create-profile' className='btn btn-primary my-1'>
+          <Link to='/dashboard/create-profile' className='btn btn-primary my-1'>
             Create Profile
           </Link>
         </>

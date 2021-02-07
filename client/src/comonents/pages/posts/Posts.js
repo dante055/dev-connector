@@ -6,9 +6,12 @@ import { getPosts } from '../../../stateManager/actions/postAction';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
 
-const Posts = ({ getPosts, post: { posts, loading } }) => {
+const Posts = ({
+  profile: { profile },
+  getPosts,
+  post: { posts, loading },
+}) => {
   useEffect(() => {
-    console.log('run hook');
     getPosts();
   }, []);
 
@@ -22,7 +25,11 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
         Welcome to the community
       </p>
 
-      <PostForm />
+      {profile !== null && profile !== 'NOT_CREATED' ? (
+        <PostForm />
+      ) : (
+        <h4>Frist Create a profile then post!</h4>
+      )}
 
       <div className='posts'>
         {posts && posts.length ? (
@@ -38,10 +45,12 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   post: state.post,
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { getPosts })(Posts);

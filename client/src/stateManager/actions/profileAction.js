@@ -19,6 +19,9 @@ export const getCurrentProfile = () => async dispatch => {
     const res = await axiosInstance.get('/profiles/my', {
       withCredentials: true,
     });
+
+    if (res.data.profile === null) res.data.profile = 'NOT_CREATED';
+
     dispatch({ type: GET_PROFILE, payload: res.data.profile });
   } catch (error) {
     console.log(error);
@@ -90,10 +93,9 @@ export const createEditProfile = (
       )
     );
 
-    if (!edit) {
-      history.push('/dashboard');
-      window.scrollTo(0, 0);
-    }
+    history.push('/dashboard');
+    window.scrollTo(0, 0);
+    
   } catch (error) {
     const errMsg = handleErrors(error);
     errMsg.forEach(msg => dispatch(setAlert(msg, 'danger')));

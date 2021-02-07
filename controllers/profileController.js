@@ -96,9 +96,9 @@ exports.getCurrentUserProfile = catchAsync(async (req, res, next) => {
     select: ['name', 'avatar'],
   });
 
-  if (!profile) {
-    return next(new AppError('There is no profie for this user!', 404));
-  }
+  // if (!profile) {
+  //   return next(new AppError('There is no profie for this user!', 400));
+  // }
 
   res.json({
     status: 'success',
